@@ -6,14 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
 const app = (0, express_1.default)();
-const PORT = process.env.PORT || 8080;
-// Use CORS to allow frontend requests
-app.use((0, cors_1.default)());
-// Example API route
-app.get("/api/hello", (req, res) => {
-    res.send("Hello from your Render backend!");
+app.use((0, cors_1.default)({ origin: true }));
+app.get("/hello", (req, res) => {
+    res.send("Hello from backend!");
 });
-// Start server
+const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Server running on port ${PORT}`);
 });
